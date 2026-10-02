@@ -1,0 +1,26 @@
+info:
+  name: Create dive site
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://localhost:8080/api/dive-sites
+  body:
+    type: json
+    data: |2-
+       {
+           "name": "Test Reef",
+           "location": "Practice Bay",
+           "maxDepthMeters": 10,
+           "difficulty": "BEGINNER",
+           "description": "Created from Bruno"
+         }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
