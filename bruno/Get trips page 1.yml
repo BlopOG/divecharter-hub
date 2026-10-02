@@ -1,0 +1,23 @@
+info:
+  name: Get trips page 1
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: http://localhost:8080/api/trips?page=0&size=2
+  params:
+    - name: page
+      value: "0"
+      type: query
+    - name: size
+      value: "2"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

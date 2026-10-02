@@ -1,0 +1,6 @@
+INSERT INTO dive_sites (name, location, max_depth_m, difficulty, description) VALUES
+                                                                                  ('Christ of the Abyss',  'Key Largo, Florida',        8,  'BEGINNER',     'Submerged bronze statue in shallow, clear water.'),
+                                                                                  ('Vandenberg Wreck',     'Key West, Florida',         30, 'INTERMEDIATE', 'Large former military ship sunk as an artificial reef.'),
+                                                                                  ('Shark Point',          'Phi Phi Islands, Thailand', 24, 'INTERMEDIATE', 'Limestone pinnacles where leopard sharks are often seen.'),
+                                                                                  ('Barracuda Point',      'Sipadan, Malaysia',         35, 'ADVANCED',     'Strong currents and huge schools of barracuda.'),
+                                                                                  ('Manta Ray Night Dive', 'Kona, Hawaii',              12, 'BEGINNER',     'Night dive watching manta rays feed under lights.');

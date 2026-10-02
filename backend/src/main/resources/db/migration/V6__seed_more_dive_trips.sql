@@ -1,0 +1,7 @@
+INSERT INTO dive_trips (dive_site_id, boat_name, departure_time, return_time, capacity, seats_booked, price, status) VALUES
+                                                                                                                         ((SELECT id FROM dive_sites WHERE name = 'Christ of the Abyss'),
+                                                                                                                          'Tide Chaser',  DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 5 DAY),  INTERVAL 9 HOUR), DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 5 DAY),  INTERVAL 12 HOUR), 10, 0, 85.00,  'SCHEDULED'),
+                                                                                                                         ((SELECT id FROM dive_sites WHERE name = 'Vandenberg Wreck'),
+                                                                                                                          'Wreck Hunter', DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 7 DAY),  INTERVAL 7 HOUR), DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 7 DAY),  INTERVAL 13 HOUR), 10, 0, 180.00, 'SCHEDULED'),
+                                                                                                                         ((SELECT id FROM dive_sites WHERE name = 'Manta Ray Night Dive'),
+                                                                                                                          'Night Owl',    DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 9 DAY),  INTERVAL 18 HOUR), DATE_ADD(DATE_ADD(CURDATE(), INTERVAL 9 DAY),  INTERVAL 21 HOUR), 12, 0, 150.00, 'SCHEDULED');
