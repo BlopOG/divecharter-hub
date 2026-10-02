@@ -1,13 +1,12 @@
 package com.divecharter.hub.services;
 
 import com.divecharter.hub.dto.DiveSiteResponse;
+import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.DiveSite;
 import com.divecharter.hub.repositories.DiveSiteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -26,8 +25,7 @@ public class DiveSiteService {
 
     public DiveSiteResponse findById(Long id) {
         DiveSite site = diveSiteRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND, "Dive site not found with id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Dive site", id));
         return toResponse(site);
     }
 
