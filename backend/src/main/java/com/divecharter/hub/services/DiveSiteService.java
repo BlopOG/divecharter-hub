@@ -6,6 +6,7 @@ import com.divecharter.hub.exceptions.DuplicateResourceException;
 import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.DiveSite;
 import com.divecharter.hub.repositories.DiveSiteRepository;
+import com.divecharter.hub.utils.InputSanitizer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +34,7 @@ public class DiveSiteService {
 
     @Transactional
     public DiveSiteResponse create(DiveSiteRequest request) {
-        String name = request.name().trim();
+        String name = InputSanitizer.clean(request.name());
         if (diveSiteRepository.existsByNameIgnoreCase(name)) {
             throw new DuplicateResourceException("A dive site named '" + name + "' already exists");
         }
@@ -46,7 +47,7 @@ public class DiveSiteService {
     public DiveSiteResponse update(Long id, DiveSiteRequest request) {
         DiveSite site = diveSiteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Dive site", id));
-        String name = request.name().trim();
+        String name = InputSanitizer.clean(request.name());
         if (diveSiteRepository.existsByNameIgnoreCaseAndIdNot(name, id)) {
             throw new DuplicateResourceException("A dive site named '" + name + "' already exists");
         }
@@ -62,11 +63,11 @@ public class DiveSiteService {
     }
 
     private void applyRequest(DiveSiteRequest request, DiveSite site) {
-        site.setName(request.name().trim());
-        site.setLocation(request.location().trim());
+        site.setName(InputSanitizer.clean(request.name()));
+        site.setLocation(InputSanitizer.clean(request.location()));
         site.setMaxDepthMeters(request.maxDepthMeters());
         site.setDifficulty(request.difficulty());
-        site.setDescription(request.description() == null ? null : request.description().trim());
+        site.setDescription(InputSanitizer.clean(request.description()));
     }
 
     private DiveSiteResponse toResponse(DiveSite site) {

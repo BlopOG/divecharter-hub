@@ -10,6 +10,7 @@ import com.divecharter.hub.models.User;
 import com.divecharter.hub.models.enums.Role;
 import com.divecharter.hub.repositories.UserRepository;
 import com.divecharter.hub.security.JwtService;
+import com.divecharter.hub.utils.InputSanitizer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -39,11 +40,11 @@ public class AuthService {
         User user = new User();
         user.setEmail(email);
         user.setPasswordHash(passwordEncoder.encode(request.password()));
-        user.setFullName(request.fullName().trim());
+        user.setFullName(InputSanitizer.clean(request.fullName()));
         user.setRole(Role.USER);
         user.setCertLevel(request.certLevel());
-        user.setCertAgency(trimOrNull(request.certAgency()));
-        user.setCertNumber(trimOrNull(request.certNumber()));
+        user.setCertAgency(InputSanitizer.clean(request.certAgency()));
+        user.setCertNumber(InputSanitizer.clean(request.certNumber()));
         user.setCertVerified(false);
 
         return toResponse(userRepository.save(user));
@@ -79,12 +80,5 @@ public class AuthService {
                 user.isCertVerified(),
                 user.getCertLevel().getMaxDepthMeters(),
                 user.getCreatedAt());
-    }
-
-    private static String trimOrNull(String value) {
-        if (value == null || value.isBlank()) {
-            return null;
-        }
-        return value.trim();
     }
 }
