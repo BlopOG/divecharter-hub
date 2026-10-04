@@ -1,12 +1,19 @@
 package com.divecharter.hub.services;
 
+import com.divecharter.hub.dto.AuthResponse;
+import com.divecharter.hub.dto.LoginRequest;
 import com.divecharter.hub.dto.RegisterRequest;
 import com.divecharter.hub.dto.UserResponse;
 import com.divecharter.hub.exceptions.DuplicateResourceException;
+import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.User;
 import com.divecharter.hub.models.enums.Role;
 import com.divecharter.hub.repositories.UserRepository;
+import com.divecharter.hub.security.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +26,8 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @Transactional
     public UserResponse register(RegisterRequest request) {
@@ -38,6 +47,24 @@ public class AuthService {
         user.setCertVerified(false);
 
         return toResponse(userRepository.save(user));
+    }
+
+    @Transactional(readOnly = true)
+    public AuthResponse login(LoginRequest request) {
+        String email = request.email().trim().toLowerCase(Locale.ROOT);
+        // Throws BadCredentialsException (→ 401) if the email or password is wrong
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, request.password()));
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new BadCredentialsException("Invalid email or password"));
+        return new AuthResponse(jwtService.generateToken(user), "Bearer",
+                jwtService.getExpirationMs(), toResponse(user));
+    }
+
+    @Transactional(readOnly = true)
+    public UserResponse getCurrentUser(Long userId) {
+        return userRepository.findById(userId)
+                .map(AuthService::toResponse)
+                .orElseThrow(() -> new ResourceNotFoundException("User", userId));
     }
 
     public static UserResponse toResponse(User user) {

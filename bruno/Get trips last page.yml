@@ -1,7 +1,7 @@
 info:
   name: Get trips last page
   type: http
-  seq: 9
+  seq: 8
 
 http:
   method: GET

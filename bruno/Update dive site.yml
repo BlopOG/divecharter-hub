@@ -1,7 +1,7 @@
 info:
   name: Update dive site
   type: http
-  seq: 4
+  seq: 3
 
 http:
   method: PUT

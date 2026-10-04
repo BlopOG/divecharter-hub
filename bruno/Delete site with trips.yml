@@ -1,7 +1,7 @@
 info:
   name: Delete site with trips
   type: http
-  seq: 13
+  seq: 12
 
 http:
   method: DELETE

@@ -1,11 +1,11 @@
 info:
-  name: Create dive site
+  name: me
   type: http
-  seq: 3
+  seq: 14
 
 http:
-  method: POST
-  url: http://localhost:8080/api/dive-sites
+  method: GET
+  url: http://localhost:8080/api/auth/me
   auth: inherit
 
 settings:
