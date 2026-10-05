@@ -1,11 +1,11 @@
 info:
-  name: Delete dive site
+  name: Cancel booking
   type: http
-  seq: 4
+  seq: 19
 
 http:
-  method: DELETE
-  url: http://localhost:8080/api/dive-sites/13
+  method: PATCH
+  url: http://localhost:8080/api/bookings/3/cancel
   auth: inherit
 
 settings:

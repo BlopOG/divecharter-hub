@@ -1,11 +1,11 @@
 info:
-  name: Delete dive site
+  name: Book shallow trip
   type: http
-  seq: 4
+  seq: 16
 
 http:
-  method: DELETE
-  url: http://localhost:8080/api/dive-sites/13
+  method: POST
+  url: http://localhost:8080/api/bookings
   auth: inherit
 
 settings:

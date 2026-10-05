@@ -1,0 +1,23 @@
+info:
+  name: "login unverified "
+  type: http
+  seq: 21
+
+http:
+  method: POST
+  url: http://localhost:8080/api/auth/login
+  body:
+    type: json
+    data: |2-
+        {
+           "email": "unverified@test.com",
+           "password": "Password1"
+         }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -1,5 +1,6 @@
 package com.divecharter.hub.models;
 
+import com.divecharter.hub.exceptions.TripFullException;
 import com.divecharter.hub.models.enums.TripStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -62,5 +63,22 @@ public class DiveTrip {
 
     public int getSeatsAvailable() {
         return capacity - seatsBooked;
+    }
+
+    public boolean isFull() {
+        return seatsBooked >= capacity;
+    }
+
+    public void reserveSeat() {
+        if (isFull()) {
+            throw new TripFullException(boatName);
+        }
+        seatsBooked++;
+    }
+
+    public void releaseSeat() {
+        if (seatsBooked > 0) {
+            seatsBooked--;
+        }
     }
 }

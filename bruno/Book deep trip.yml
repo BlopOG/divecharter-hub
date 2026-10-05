@@ -1,11 +1,14 @@
 info:
-  name: Delete dive site
+  name: Book deep trip
   type: http
-  seq: 4
+  seq: 17
 
 http:
-  method: DELETE
-  url: http://localhost:8080/api/dive-sites/13
+  method: POST
+  url: http://localhost:8080/api/bookings
+  body:
+    type: json
+    data: '{ "tripId":2 }'
   auth: inherit
 
 settings:

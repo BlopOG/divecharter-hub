@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
-
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -98,6 +98,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleAccessDenied(AccessDeniedException ex,
                                                             HttpServletRequest request) {
         return build(HttpStatus.FORBIDDEN, "You do not have permission to perform this action", request);
+    }
+    // Any ApiException subclass: the exception itself says which status to use
+    @ExceptionHandler(ApiException.class)
+    public ResponseEntity<ErrorResponse> handleApiException(ApiException ex, HttpServletRequest request) {
+        return build(ex.getStatus(), ex.getMessage(), request);
+    }
+
+    // Two people changed the same trip at the same moment (e.g. both grabbed the last seat)
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<ErrorResponse> handleOptimisticLock(ObjectOptimisticLockingFailureException ex,
+                                                              HttpServletRequest request) {
+        return build(HttpStatus.CONFLICT,
+                "This trip was just updated by another booking. Please refresh and try again.", request);
     }
 
     // Safety net for anything unexpected: log the details, but never show them to the client
