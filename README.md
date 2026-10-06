@@ -1,4 +1,5 @@
 # DiveCharter Hub
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=BlopOG_divecharter-hub)](https://sonarcloud.io/summary/new_code?id=BlopOG_divecharter-hub)
 
 A booking platform for scuba diving charters. Divers browse dive sites and upcoming boat trips and book a seat, but **only on trips their certification qualifies them for**. Before accepting a booking, the backend checks the diver's certification against the dive site's maximum depth. It also manages boat capacity, prevents double-booking, and enforces a cancellation window.
 
