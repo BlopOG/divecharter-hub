@@ -184,6 +184,6 @@ divecharter-hub/
 - [x] Registration, JWT login and roles
 - [x] CORS, rate limiting and input sanitization
 - [x] Bookings with certification and capacity rules
-- [ ] Admin certification verification and passenger manifests
+- [x] Admin certification verification and passenger manifests
 - [ ] Unit tests with 70%+ coverage
 - [ ] React frontend
