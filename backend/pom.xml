@@ -15,6 +15,11 @@
 	<properties>
 		<java.version>21</java.version>
 		<jjwt.version>0.12.6</jjwt.version>
+		<!-- SonarQube Cloud (not secret - the token is passed separately) -->
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.organization>blopog</sonar.organization>
+		<sonar.projectKey>BlopOG_divecharter-hub</sonar.projectKey>
+		<sonar.coverage.exclusions>**/config/**,**/dto/**,**/BackendApplication.java</sonar.coverage.exclusions>
 	</properties>
 
 	<dependencies>
@@ -150,7 +155,7 @@
 			</plugin>
 
 			<!-- NEW (Step 13): code coverage.
-                 Report: target/site/jacoco/index.html   |   70% gate on `verify` -->
+                   Report: target/site/jacoco/index.html   |   70% gate on `verify` -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
