@@ -213,9 +213,9 @@ This document describes who uses DiveCharter Hub, what they need it to do, and t
 
 **Acceptance criteria**
 
-- [ ] Admins can list divers whose certification is unverified
-- [ ] Admins can mark a diver verified or unverified
-- [ ] Divers cannot change their own verification status
+- [x] Admins can list divers whose certification is unverified
+- [x] Admins can mark a diver verified or unverified
+- [x] Divers cannot change their own verification status
 
 **Priority:** Must · **Status:** 🕒 Planned
 
@@ -229,9 +229,9 @@ This document describes who uses DiveCharter Hub, what they need it to do, and t
 
 **Acceptance criteria**
 
-- [ ] Shows each confirmed diver's name, email, certification level and agency
-- [ ] Cancelled bookings are not included
-- [ ] Only admins can view manifests
+- [x] Shows each confirmed diver's name, email, certification level and agency
+- [x] Cancelled bookings are not included
+- [x] Only admins can view manifests
 
 **Priority:** Should · **Status:** 🕒 Planned
 
@@ -245,8 +245,8 @@ This document describes who uses DiveCharter Hub, what they need it to do, and t
 
 **Acceptance criteria**
 
-- [x] Admins are not limited by the 24-hour cutoff
-- [x] The seat is released, as with a normal cancellation
+- [] Admins are not limited by the 24-hour cutoff
+- [] The seat is released, as with a normal cancellation
 
 **Priority:** Should · **Status:** ✅ Done
 

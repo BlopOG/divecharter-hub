@@ -126,6 +126,9 @@ WHERE email = 'your-email@example.com';
 | `POST` | `/api/bookings` | Logged in |
 | `GET` | `/api/bookings/me` | Logged in |
 | `PATCH` | `/api/bookings/{id}/cancel` | Owner or Admin |
+| `GET` | `/api/admin/users?pendingOnly=` | Admin |
+| `PATCH` | `/api/admin/users/{id}/certification` | Admin |
+| `GET` | `/api/admin/trips/{id}/manifest` | Admin |
 
 Protected endpoints need the header `Authorization: Bearer <token>`, using the token from `/api/auth/login`.
 
@@ -181,6 +184,6 @@ divecharter-hub/
 - [x] Registration, JWT login and roles
 - [x] CORS, rate limiting and input sanitization
 - [x] Bookings with certification and capacity rules
-- [ ] Admin certification verification and passenger manifests
+- [x] Admin certification verification and passenger manifests
 - [ ] Unit tests with 70%+ coverage
 - [ ] React frontend
