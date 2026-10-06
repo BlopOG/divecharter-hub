@@ -248,3 +248,69 @@ button:disabled { opacity: 0.45; cursor: not-allowed; }
 .legend .depth-deep    { --zone: var(--zone-deep); }
 
 .site-description { margin: 0 0 1rem; font-size: 0.95rem; }
+
+/* Forms ------------------------------------------------------------------- */
+.form-card {
+  max-width: 480px;
+  margin: 1rem auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  box-shadow: var(--shadow);
+}
+.form { display: grid; gap: 1rem; margin: 1.25rem 0; }
+.field { display: grid; gap: 0.35rem; font-weight: 500; font-size: 0.95rem; }
+.field input,
+.field select {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-weight: 400;
+}
+.field input:focus-visible,
+.field select:focus-visible { outline: 3px solid var(--coral); outline-offset: 1px; }
+.field input[aria-invalid="true"] { border-color: var(--error); }
+.field-error { color: var(--error); font-size: 0.85rem; font-weight: 500; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.optional { color: var(--muted); font-weight: 400; }
+.small { font-size: 0.82rem; font-weight: 400; }
+.notice {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: #e9f7f6;
+  border: 1px solid #bfe7e5;
+  color: var(--deep);
+  font-size: 0.92rem;
+}
+
+/* Navbar: logged-in user ---------------------------------------------------- */
+.user-chip { display: inline-flex; align-items: center; gap: 0.45rem; color: #fff; font-weight: 600; }
+.pending-tag {
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--zone-mid);
+  color: var(--abyss);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.link-button { background: transparent; color: #d7e6ee; padding: 0.35rem 0.6rem; border-radius: 8px; font-weight: 500; }
+.link-button:hover:not(:disabled) { background: rgba(255, 255, 255, 0.08); color: #fff; }
+
+@media (max-width: 560px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+/* Keep form controls inside their card */
+.field { min-width: 0; }
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}

@@ -9,6 +9,7 @@ import MyBookingsPage from "./pages/MyBookingsPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import SitesPage from "./pages/SitesPage.jsx";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 
 export default function App() {
   return (
@@ -20,8 +21,25 @@ export default function App() {
         <Route path="trips/:id" element={<TripDetailPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="my-bookings" element={<MyBookingsPage />} />
-        <Route path="admin" element={<AdminPage />} />
+        
+        {/* Protected Routes */}
+        <Route
+          path="my-bookings"
+          element={
+            <ProtectedRoute>
+              <MyBookingsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="admin"
+          element={
+            <ProtectedRoute adminOnly>
+              <AdminPage />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

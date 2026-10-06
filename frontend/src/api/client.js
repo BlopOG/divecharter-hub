@@ -1,6 +1,13 @@
 // One place for every call to the Spring Boot API.
 const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8080";
 
+// Set by AuthProvider: called when a logged-in request comes back 401 (expired/invalid token)
+let unauthorizedHandler = null;
+
+export function setUnauthorizedHandler(handler) {
+  unauthorizedHandler = handler;
+}
+
 export async function apiRequest(path, { method = "GET", body, token } = {}) {
   const headers = { "Content-Type": "application/json" };
   if (token) {
@@ -21,6 +28,10 @@ export async function apiRequest(path, { method = "GET", body, token } = {}) {
   const data = await response.json().catch(() => null);
 
   if (!response.ok) {
+    // A request that SENT a token was rejected → the session is no longer valid
+    if (response.status === 401 && token && unauthorizedHandler) {
+      unauthorizedHandler();
+    }
     // Your backend always returns { status, message, fieldErrors? } on errors
     const error = new Error(data?.message ?? `Request failed (${response.status})`);
     error.status = response.status;
