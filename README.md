@@ -148,11 +148,29 @@ Protected endpoints need the header `Authorization: Bearer <token>`, using the t
 
 ## Testing
 
-The `bruno/` folder holds an API collection for every endpoint, including error cases. Open it in [Bruno](https://www.usebruno.com/), select the `local` environment, and run `login` first. The token is then saved automatically for the other requests.
+### Unit tests
 
-*Unit tests with coverage reporting are in progress.*
+Business logic is covered by unit tests (JUnit 5 + Mockito) that run without a database, including every booking rule, authentication, JWT handling, rate limiting and error handling.
 
----
+```bash
+cd backend
+./mvnw clean verify
+```
+
+`verify` runs all tests, writes a coverage report to `backend/target/site/jacoco/index.html`, and **fails the build if line coverage drops below 70%**.
+
+| Metric | Result |
+|---|---|
+| Line coverage (JaCoCo) | ~89% |
+| SonarQube quality gate | Passed |
+| Security / Reliability / Maintainability | A / A / A |
+| Duplications | 0% |
+
+Configuration classes, DTO records and the startup class are excluded from coverage, since they contain no logic. Controllers are thin and are covered end to end by the API collection below.
+
+### API tests
+
+The `bruno/` folder holds an API collection for every endpoint, including error cases (validation, 401, 403, 404, 409, 422, 429). Open it in [Bruno](https://www.usebruno.com/), select the `local` environment, and run `login` first. The token is then saved automatically for the other requests.
 
 ## Project structure
 
@@ -185,5 +203,5 @@ divecharter-hub/
 - [x] CORS, rate limiting and input sanitization
 - [x] Bookings with certification and capacity rules
 - [x] Admin certification verification and passenger manifests
-- [ ] Unit tests with 70%+ coverage
+- [x] Unit tests with 70%+ coverage
 - [ ] React frontend
