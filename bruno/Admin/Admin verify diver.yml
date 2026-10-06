@@ -1,14 +1,14 @@
 info:
-  name: Book shallow trip
+  name: Admin verify diver
   type: http
-  seq: 12
+  seq: 2
 
 http:
-  method: POST
-  url: http://localhost:8080/api/bookings
+  method: PATCH
+  url: http://localhost:8080/api/admin/users/999/certification
   body:
     type: json
-    data: '{ "tripId": 6}'
+    data: '{ "verified": true }'
   auth: inherit
 
 settings:

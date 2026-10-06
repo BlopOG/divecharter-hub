@@ -1,7 +1,7 @@
 info:
   name: login
   type: http
-  seq: 13
+  seq: 15
 
 http:
   method: POST
@@ -14,6 +14,14 @@ http:
         "password": "Password1"
       }
   auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.status === 200) {
+             bru.setEnvVar("token", res.body.accessToken);
+           }
 
 settings:
   encodeUrl: true

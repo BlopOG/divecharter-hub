@@ -10,10 +10,18 @@ http:
     type: json
     data: |2-
         {
-           "email": "unverified@test.com",
+           "email": "openwater@test.com",
            "password": "Password1"
          }
   auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.status === 200) {
+             bru.setEnvVar("token", res.body.accessToken);
+           }
 
 settings:
   encodeUrl: true

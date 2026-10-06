@@ -1,11 +1,11 @@
 info:
   name: Cancel booking
   type: http
-  seq: 19
+  seq: 18
 
 http:
   method: PATCH
-  url: http://localhost:8080/api/bookings/3/cancel
+  url: http://localhost:8080/api/bookings/4/cancel
   auth: inherit
 
 settings:

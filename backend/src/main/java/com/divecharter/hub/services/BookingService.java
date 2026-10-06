@@ -24,6 +24,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.divecharter.hub.dto.ManifestEntry;
+import com.divecharter.hub.dto.ManifestResponse;
+import java.util.List;
 
 import java.time.LocalDateTime;
 
@@ -113,6 +116,34 @@ public class BookingService {
         booking.setStatus(BookingStatus.CANCELLED);
         trip.releaseSeat();
         return toResponse(booking);
+    }
+    public ManifestResponse getManifest(Long tripId) {
+        DiveTrip trip = diveTripRepository.findByIdWithSite(tripId)
+                .orElseThrow(() -> new ResourceNotFoundException("Dive trip", tripId));
+
+        List<ManifestEntry> passengers = bookingRepository.findManifest(tripId, BookingStatus.CONFIRMED)
+                .stream()
+                .map(booking -> {
+                    User diver = booking.getUser();
+                    return new ManifestEntry(
+                            booking.getId(),
+                            diver.getFullName(),
+                            diver.getEmail(),
+                            diver.getCertLevel(),
+                            diver.getCertAgency(),
+                            diver.getCertNumber());
+                })
+                .toList();
+
+        return new ManifestResponse(
+                trip.getId(),
+                trip.getDiveSite().getName(),
+                trip.getBoatName(),
+                trip.getDepartureTime(),
+                trip.getReturnTime(),
+                trip.getCapacity(),
+                trip.getSeatsBooked(),
+                passengers);
     }
 
     private BookingResponse toResponse(Booking booking) {
