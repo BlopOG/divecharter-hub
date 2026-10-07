@@ -25,3 +25,15 @@ export function requiredCertification(depthMeters) {
   if (depthMeters <= 30) return "Advanced Open Water";
   return "Deep Specialty";
 }
+const CERT_LABELS = {
+  OPEN_WATER: "Open Water",
+  ADVANCED_OPEN_WATER: "Advanced Open Water",
+  RESCUE_DIVER: "Rescue Diver",
+  DEEP_SPECIALTY: "Deep Specialty",
+  DIVEMASTER: "Divemaster",
+};
+
+// Turns "ADVANCED_OPEN_WATER" into "Advanced Open Water"
+export function certificationLabel(level) {
+  return CERT_LABELS[level] ?? level;
+}

@@ -13,8 +13,6 @@ export default function TripsPage() {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setError("");
 
     apiRequest(`/api/trips?page=${page}&size=${PAGE_SIZE}&sort=departureTime`)
       .then((result) => {
@@ -32,6 +30,13 @@ export default function TripsPage() {
       cancelled = true;
     };
   }, [page]);
+
+  // Reset loading/error here (in the click handler), not inside the effect
+  function goToPage(nextPage) {
+    setLoading(true);
+    setError("");
+    setPage(nextPage);
+  }
 
   if (loading && !data) return <p>Loading trips…</p>;
   if (error) return <p className="error">{error}</p>;
@@ -71,13 +76,13 @@ export default function TripsPage() {
       )}
 
       <div className="pagination">
-        <button onClick={() => setPage((p) => p - 1)} disabled={page === 0}>
+        <button onClick={() => goToPage(page - 1)} disabled={page === 0}>
           ← Previous
         </button>
         <span>
           Page {data.page + 1} of {Math.max(data.totalPages, 1)}
         </span>
-        <button onClick={() => setPage((p) => p + 1)} disabled={data.last}>
+        <button onClick={() => goToPage(page + 1)} disabled={data.last}>
           Next →
         </button>
       </div>
