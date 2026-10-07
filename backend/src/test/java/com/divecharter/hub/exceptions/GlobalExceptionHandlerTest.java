@@ -1,6 +1,6 @@
 package com.divecharter.hub.exceptions;
 
-import com.divecharter.hub.dto.ErrorResponse;
+import com.divecharter.hub.dto.CommonDtos.ErrorResponse;
 import com.divecharter.hub.models.DiveTrip;
 import org.junit.jupiter.api.Test;
 import org.springframework.dao.DataIntegrityViolationException;

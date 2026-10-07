@@ -1,7 +1,7 @@
 package com.divecharter.hub.controllers;
 
-import com.divecharter.hub.dto.DiveTripResponse;
-import com.divecharter.hub.dto.PageResponse;
+import com.divecharter.hub.dto.DiveDtos.DiveTripResponse;
+import com.divecharter.hub.dto.CommonDtos.PageResponse;
 import com.divecharter.hub.services.DiveTripService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;

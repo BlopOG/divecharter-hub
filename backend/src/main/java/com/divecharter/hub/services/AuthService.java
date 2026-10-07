@@ -1,9 +1,9 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.AuthResponse;
-import com.divecharter.hub.dto.LoginRequest;
-import com.divecharter.hub.dto.RegisterRequest;
-import com.divecharter.hub.dto.UserResponse;
+import com.divecharter.hub.dto.UserDtos.AuthResponse;
+import com.divecharter.hub.dto.UserDtos.LoginRequest;
+import com.divecharter.hub.dto.UserDtos.RegisterRequest;
+import com.divecharter.hub.dto.UserDtos.UserResponse;
 import com.divecharter.hub.exceptions.DuplicateResourceException;
 import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.User;

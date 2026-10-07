@@ -1,7 +1,7 @@
 package com.divecharter.hub.controllers;
 
-import com.divecharter.hub.dto.DiveSiteRequest;
-import com.divecharter.hub.dto.DiveSiteResponse;
+import com.divecharter.hub.dto.DiveDtos.DiveSiteRequest;
+import com.divecharter.hub.dto.DiveDtos.DiveSiteResponse;
 import com.divecharter.hub.services.DiveSiteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

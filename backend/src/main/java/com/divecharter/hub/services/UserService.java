@@ -1,7 +1,7 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.PageResponse;
-import com.divecharter.hub.dto.UserResponse;
+import com.divecharter.hub.dto.CommonDtos.PageResponse;
+import com.divecharter.hub.dto.UserDtos.UserResponse;
 import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.User;
 import com.divecharter.hub.models.enums.Role;

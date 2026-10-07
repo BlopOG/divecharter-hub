@@ -1,6 +1,6 @@
 package com.divecharter.hub.exceptions;
 
-import com.divecharter.hub.dto.ErrorResponse;
+import com.divecharter.hub.dto.CommonDtos.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;

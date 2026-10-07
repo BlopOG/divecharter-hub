@@ -1,9 +1,9 @@
 package com.divecharter.hub.controllers;
 
-import com.divecharter.hub.dto.CertificationVerificationRequest;
-import com.divecharter.hub.dto.ManifestResponse;
-import com.divecharter.hub.dto.PageResponse;
-import com.divecharter.hub.dto.UserResponse;
+import com.divecharter.hub.dto.UserDtos.CertificationVerificationRequest;
+import com.divecharter.hub.dto.BookingDtos.ManifestResponse;
+import com.divecharter.hub.dto.CommonDtos.PageResponse;
+import com.divecharter.hub.dto.UserDtos.UserResponse;
 import com.divecharter.hub.services.BookingService;
 import com.divecharter.hub.services.UserService;
 import jakarta.validation.Valid;

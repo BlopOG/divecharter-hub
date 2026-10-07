@@ -1,8 +1,8 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.BookingRequest;
-import com.divecharter.hub.dto.BookingResponse;
-import com.divecharter.hub.dto.ManifestResponse;
+import com.divecharter.hub.dto.BookingDtos.BookingRequest;
+import com.divecharter.hub.dto.BookingDtos.BookingResponse;
+import com.divecharter.hub.dto.BookingDtos.ManifestResponse;
 import com.divecharter.hub.exceptions.BusinessRuleException;
 import com.divecharter.hub.exceptions.CertificationInsufficientException;
 import com.divecharter.hub.exceptions.CertificationNotVerifiedException;

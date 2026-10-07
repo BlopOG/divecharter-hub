@@ -1,8 +1,8 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.BookingRequest;
-import com.divecharter.hub.dto.BookingResponse;
-import com.divecharter.hub.dto.PageResponse;
+import com.divecharter.hub.dto.BookingDtos.BookingRequest;
+import com.divecharter.hub.dto.BookingDtos.BookingResponse;
+import com.divecharter.hub.dto.CommonDtos.PageResponse;
 import com.divecharter.hub.exceptions.BusinessRuleException;
 import com.divecharter.hub.exceptions.CertificationInsufficientException;
 import com.divecharter.hub.exceptions.CertificationNotVerifiedException;
@@ -24,8 +24,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.divecharter.hub.dto.ManifestEntry;
-import com.divecharter.hub.dto.ManifestResponse;
+import com.divecharter.hub.dto.BookingDtos.ManifestEntry;
+import com.divecharter.hub.dto.BookingDtos.ManifestResponse;
 import java.util.List;
 
 import java.time.LocalDateTime;

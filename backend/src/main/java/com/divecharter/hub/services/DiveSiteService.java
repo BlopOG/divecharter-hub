@@ -1,7 +1,7 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.DiveSiteRequest;
-import com.divecharter.hub.dto.DiveSiteResponse;
+import com.divecharter.hub.dto.DiveDtos.DiveSiteRequest;
+import com.divecharter.hub.dto.DiveDtos.DiveSiteResponse;
 import com.divecharter.hub.exceptions.DuplicateResourceException;
 import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.DiveSite;
