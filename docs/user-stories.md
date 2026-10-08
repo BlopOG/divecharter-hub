@@ -1,4 +1,4 @@
-# DiveCharter Hub: User Stories and Requirements
+# DiveMatrix: User Stories and Requirements
 
 This document describes who uses DiveCharter Hub, what they need it to do, and the requirements those needs create.
 
