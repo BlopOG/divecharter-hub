@@ -8,9 +8,16 @@ export default function HomePage() {
         Browse upcoming boat trips to the world's best dive sites. We check every booking against
         your certification, so you only dive within your training.
       </p>
-      <Link to="/trips" className="button button-large">
-        Browse trips
-      </Link>
+
+      {/* NEW: two buttons instead of one */}
+      <div className="hero-actions">
+        <Link to="/trips" className="button button-large">
+          Browse trips
+        </Link>
+        <Link to="/sites" className="button button-large button-ghost">
+          Explore dive sites
+        </Link>
+      </div>
 
       <div className="features">
         <div>

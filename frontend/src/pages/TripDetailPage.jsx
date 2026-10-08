@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { apiRequest } from "../api/client.js";
+import SiteImage from "../components/SiteImage.jsx"; // NEW
 import { useAuth } from "../context/auth-context.js";
 import { certificationLabel, depthZone, formatDateTime, formatPrice } from "../utils/format.js";
 
@@ -95,6 +96,13 @@ export default function TripDetailPage() {
   return (
     <section className={`detail depth-${depthZone(trip.maxDepthMeters)}`}>
       <Link to="/trips">← Back to trips</Link>
+
+      {/* NEW: large site photo */}
+      <SiteImage
+        src={trip.siteImageUrl}
+        alt={`Diving at ${trip.siteName}`}
+        className="detail-image"
+      />
 
       <div className="card-header">
         <h1>{trip.siteName}</h1>

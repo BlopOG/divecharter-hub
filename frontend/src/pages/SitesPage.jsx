@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { apiRequest } from "../api/client.js";
+import SiteImage from "../components/SiteImage.jsx"; // NEW
 import { depthZone, requiredCertification } from "../utils/format.js";
 
 export default function SitesPage() {
@@ -70,6 +71,7 @@ export default function SitesPage() {
         <div className="grid">
           {visibleSites.map((site) => (
             <article key={site.id} className={`card depth-${depthZone(site.maxDepthMeters)}`}>
+              <SiteImage src={site.imageUrl} alt={`Diving at ${site.name}`} /> {/* NEW */}
               <div className="card-header">
                 <h2>{site.name}</h2>
                 <span className="depth-badge">{site.maxDepthMeters} m</span>

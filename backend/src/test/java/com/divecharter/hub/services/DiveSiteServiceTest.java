@@ -32,7 +32,8 @@ class DiveSiteServiceTest {
     @InjectMocks private DiveSiteService diveSiteService;
 
     private DiveSiteRequest request(String name) {
-        return new DiveSiteRequest(name, "Practice Bay", 10, Difficulty.BEGINNER, "A test site");
+        // NEW: last value is imageUrl (none for these tests)
+        return new DiveSiteRequest(name, "Practice Bay", 10, Difficulty.BEGINNER, "A test site", null);
     }
 
     @Test

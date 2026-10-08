@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 import java.math.BigDecimal;
@@ -37,7 +38,11 @@ public final class DiveDtos {
             Difficulty difficulty,
 
             @Size(max = 2000, message = "Description must be at most 2000 characters")
-            String description
+            String description,
+
+            @Size(max = 255, message = "Image URL must be at most 255 characters")
+            @Pattern(regexp = "^(/|https://).*$", message = "Image URL must start with / or https://")
+            String imageUrl
     ) {
     }
 
@@ -49,7 +54,8 @@ public final class DiveDtos {
             String location,
             Integer maxDepthMeters,
             Difficulty difficulty,
-            String description
+            String description,
+            String imageUrl
     ) {
     }
 
@@ -67,7 +73,8 @@ public final class DiveDtos {
             int seatsBooked,
             int seatsAvailable,
             BigDecimal price,
-            TripStatus status
+            TripStatus status,
+            String siteImageUrl
     ) {
     }
 }

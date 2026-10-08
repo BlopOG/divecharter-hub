@@ -1,7 +1,7 @@
 package com.divecharter.hub.services;
 
-import com.divecharter.hub.dto.DiveDtos.DiveTripResponse;
 import com.divecharter.hub.dto.CommonDtos.PageResponse;
+import com.divecharter.hub.dto.DiveDtos.DiveTripResponse;
 import com.divecharter.hub.exceptions.ResourceNotFoundException;
 import com.divecharter.hub.models.DiveSite;
 import com.divecharter.hub.models.DiveTrip;
@@ -49,6 +49,7 @@ public class DiveTripService {
                 trip.getSeatsBooked(),
                 trip.getSeatsAvailable(),
                 trip.getPrice(),
-                trip.getStatus());
+                trip.getStatus(),
+                site.getImageUrl()); // NEW
     }
 }

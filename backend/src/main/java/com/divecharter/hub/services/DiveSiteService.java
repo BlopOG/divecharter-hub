@@ -68,6 +68,7 @@ public class DiveSiteService {
         site.setMaxDepthMeters(request.maxDepthMeters());
         site.setDifficulty(request.difficulty());
         site.setDescription(InputSanitizer.clean(request.description()));
+        site.setImageUrl(InputSanitizer.clean(request.imageUrl())); // NEW
     }
 
     private DiveSiteResponse toResponse(DiveSite site) {
@@ -77,6 +78,7 @@ public class DiveSiteService {
                 site.getLocation(),
                 site.getMaxDepthMeters(),
                 site.getDifficulty(),
-                site.getDescription());
+                site.getDescription(),
+                site.getImageUrl()); // NEW
     }
 }

@@ -39,4 +39,7 @@ public class DiveSite {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(name = "image_url", length = 255)
+    private String imageUrl;
 }

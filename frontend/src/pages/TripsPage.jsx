@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { apiRequest } from "../api/client.js";
+import SiteImage from "../components/SiteImage.jsx"; // NEW
 import { depthZone, formatDateTime, formatPrice } from "../utils/format.js";
 
 const PAGE_SIZE = 6;
@@ -51,6 +52,7 @@ export default function TripsPage() {
         <div className="grid">
           {data.content.map((trip) => (
             <article key={trip.id} className={`card depth-${depthZone(trip.maxDepthMeters)}`}>
+              <SiteImage src={trip.siteImageUrl} alt={`Diving at ${trip.siteName}`} /> {/* NEW */}
               <div className="card-header">
                 <h2>{trip.siteName}</h2>
                 <span className="depth-badge">{trip.maxDepthMeters} m</span>
