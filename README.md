@@ -108,6 +108,29 @@ UPDATE divecharter.users
 SET role = 'ADMIN', cert_verified = TRUE
 WHERE email = 'your-email@example.com';
 ```
+### 5. Create the first admin
+
+Register through the app's **Sign up** page, then promote the account in MySQL:
+
+```sql
+UPDATE divecharter.users
+SET role = 'ADMIN', cert_verified = TRUE
+WHERE email = 'your-email@example.com';
+```
+
+After that, admins verify other divers from the **Admin** page. No more SQL is needed.
+
+## Frontend routes
+
+| Route | Page | Access |
+|---|---|---|
+| `/` | Home | Public |
+| `/sites` | All dive sites with photos, depth colors, and live search | Public |
+| `/trips` | Upcoming trips, paginated | Public |
+| `/trips/:id` | Trip details and booking, with a certification check before booking | Public (booking needs login) |
+| `/login`, `/register` | Log in and sign up, showing the backend's validation messages | Public |
+| `/my-bookings` | Your bookings, with cancellation | Logged in |
+| `/admin` | Verify certifications and view passenger manifests | Admin |
 
 ---
 
@@ -169,6 +192,15 @@ cd backend
 
 Configuration classes, DTO records and the startup class are excluded from coverage, since they contain no logic. Controllers are thin and are covered end to end by the API collection below.
 
+### Frontend linting
+
+```bash
+cd frontend
+npm run lint
+```
+
+ESLint with the React Hooks rules runs clean.
+
 ### API tests
 
 The `bruno/` folder holds an API collection for every endpoint, including error cases (validation, 401, 403, 404, 409, 422, 429). Open it in [Bruno](https://www.usebruno.com/), select the `local` environment, and run `login` first. The token is then saved automatically for the other requests.
@@ -205,4 +237,12 @@ divecharter-hub/
 - [x] Bookings with certification and capacity rules
 - [x] Admin certification verification and passenger manifests
 - [x] Unit tests with 70%+ coverage
-- [ ] React frontend
+- [x] React frontend
+
+**Future improvements**
+- Verify certification cards automatically with dive agencies' online lookups
+- Admin pages for creating and editing trips
+- Email confirmations for bookings and cancellations
+- Gear rental with stock tracking
+
+---
