@@ -28,8 +28,8 @@ This document describes who uses DiveCharter Hub, what they need it to do, and t
 | [US-08](#us-08-view-my-bookings) | View my bookings | Diver | Must | ✅ Done |
 | [US-09](#us-09-cancel-my-booking) | Cancel my booking | Diver | Must | ✅ Done |
 | [US-10](#us-10-manage-dive-sites) | Manage dive sites | Admin | Must | ✅ Done |
-| [US-11](#us-11-verify-diver-certifications) | Verify diver certifications | Admin | Must | 🕒 Planned |
-| [US-12](#us-12-view-a-trips-passenger-manifest) | View a trip's passenger manifest | Admin | Should | 🕒 Planned |
+| [US-11](#us-11-verify-diver-certifications) | Verify diver certifications | Admin | Must | ✅ Done |
+| [US-12](#us-12-view-a-trips-passenger-manifest) | View a trip's passenger manifest | Admin | Should | ✅ Done |
 | [US-13](#us-13-override-cancellations) | Override cancellations | Admin | Should | ✅ Done |
 
 **Priority key:** **Must** = required for a working product · **Should** = important but not blocking
